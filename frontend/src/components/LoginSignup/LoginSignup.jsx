@@ -5,6 +5,8 @@ import password_icon from "../assets/password.png";
 import { Link } from "react-router-dom";
 import Validation from "./LoginSignupValidation";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
   const [values, setValues] = useState({
@@ -12,6 +14,7 @@ const LoginSignup = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
   const handleInput = (event) => {
@@ -24,6 +27,17 @@ const LoginSignup = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(Validation(values));
+    console.log(errors);
+    if (errors.name === "" && errors.email === "" && errors.password === "") {
+      console.log("how ?");
+      console.log(values);
+      axios
+        .post("http://localhost:8081/signup", values)
+        .then((res) => {
+          navigate("/Login");
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (

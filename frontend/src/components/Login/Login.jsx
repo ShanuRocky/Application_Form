@@ -6,25 +6,23 @@ import { useState } from "react";
 import Validation from "./LoginVlidation";
 
 const Login = () => {
-
-  const [values,setValues] = useState({
-    email: '',
-    password: ''
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
   });
-  const[errors,setErrors] = useState({
-    
-  });
+  const [errors, setErrors] = useState({});
 
+  const handleInput = (event) => {
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: [event.target.value],
+    }));
+  };
 
-  const handleInput = (event) => 
-  {
-    setValues(prev => ({...prev,[event.target.name]:[event.target.value]}));
-  }
-
-   const handleSubmit = (event) => {
-     event.preventDefault();
-     setErrors(Validation(values));
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setErrors(Validation(values));
+  };
 
   return (
     <div className="bodyy">
@@ -36,39 +34,43 @@ const Login = () => {
         <form action="" className="inputs">
           <div className="input">
             <img src={email_icon} alt="" />
-            <input name="email" type="email" placeholder="Email Id" onChange={handleInput}
+            <input
+              name="email"
+              type="email"
+              placeholder="Email Id"
+              onChange={handleInput}
             />
             <div>
-            {errors.email && <span className="errortype">{errors.email}</span>}
-          </div>
-          </div>
-          
-          <div className="input">
-            <img src={password_icon} alt="" />
-            <input name="password" type="password" placeholder="Password" onChange={handleInput}
-            />
-            <div>
-          {errors.password && <span className="errortype">{errors.password}</span>}
-          </div>
-          </div>
-          
-        </form>
-          <div className="forgot-password">
-            Forgot Password? <Link to="/Forgot">Click Here</Link>{" "}
+              {errors.email && (
+                <span className="errortype">{errors.email}</span>
+              )}
+            </div>
           </div>
 
+          <div className="input">
+            <img src={password_icon} alt="" />
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={handleInput}
+            />
+            <div>
+              {errors.password && (
+                <span className="errortype">{errors.password}</span>
+              )}
+            </div>
+          </div>
+        </form>
+        <div className="forgot-password">
+          Forgot Password? <Link to="/Forgot">Click Here</Link>{" "}
+        </div>
+
         <div className="submit-container">
-          <Link
-            to="/"
-            className="submit gray"
-          >
+          <Link to="/" className="submit gray">
             Sign Up
           </Link>
-          <Link
-           to = "/Forms"
-            type="submit"
-            className="submit"
-          >
+          <Link to="/Forms" type="submit" className="submit">
             Login
           </Link>
         </div>
