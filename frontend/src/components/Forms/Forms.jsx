@@ -173,7 +173,7 @@ const Page1 = () => {
     </div>
       <div className="footer">
           <div className="log">
-          <Link to="/Login" className="button">
+          <Link to="/page2" className="button">
             SAVE & NEXT
           </Link>
           </div>
