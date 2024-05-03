@@ -13,8 +13,6 @@ function Validation(values) {
 
   if (values.password === "") {
     errors.password = "Password is required";
-  } else if (!password_pattern.test(values.password)) {
-    errors.password = "password is invalid";
   } else {
     errors.password = "";
   }

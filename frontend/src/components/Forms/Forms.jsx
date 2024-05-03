@@ -1,184 +1,314 @@
 import "./Form.css";
 import IITPLogo from "../assets/IITp.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const Page1 = () => {
+
+    const [values, setValues] = useState({
+      adnumber: "",
+      appdate: "",
+      appnumber: "",
+      postapplied: "",
+      department: "",
+      firstname: "",
+      middlename: "",
+      lastname: "",
+      fathername: "",
+      birthdate: "",
+      marialstatus: "",
+      gender: "",
+      natinality: "",
+      category: "UR",
+      idproof: "",
+      photo1: "",
+      photo2: "",
+      email: "1234kumarshanu9@ganil.com"
+    });
+
+    const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
+
+
+  const handleInput = (event) => {
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: [event.target.value],
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // setErrors(form_validation(values)); //to do - ujjawal bkl, yeh tu kar
+
+    if (true) {
+     axios.post("http://localhost:8081/page1", values)
+          .then((res) => {
+            navigate("/page2");
+          })
+          .catch((err) => console.log(err));
+        }
+  };
+
   return (
     <>
-    <div className="body">
-      <div className="headerr">
-        <h2>
-          Welcome: <span>Ma Agarwal</span>
-        </h2>
-        <div className="log">
-          <Link to="/Login" className="button">
-            Change Password
-          </Link>
-          <Link to="/Login" className="button">
-            Logout
-          </Link>
-        </div>
-      </div>
-
-      <form className="form-container">
-        <div className="main">
-          <label for="adNumber">Advertisement Number *</label>
-          <select id="adNumber">
-            <option selected>IITI/FACREC-CHE/2023/JULY/02</option>
-          </select>
-        </div>
-        <div className="main">
-          <label for="appDate">Date of Application</label>
-          <input type="date" id="appDate" value="2024-04-01" />
-        </div>
-        <div className="main">
-          <label for="appNumber">Application Number</label>
-          <input type="text" id="appNumber" value="1698348185" />
-        </div>
-        <div className="main">
-          <label for="postApplied">Post Applied For *</label>
-          <select id="postApplied">
-            <option selected>Assistant Professor Grade II</option>
-          </select>
-        </div>
-        <div className="main">
-          <label for="department">Department/School*</label>
-          <select id="department">
-            <option selected>Chemical Engineering</option>
-          </select>
-        </div>
-      </form>
-
-      <div className="father">
-        <div className="top">
-          <h3>1. Personal Details</h3>
-        </div>
-        <div class="personal-details">
-          <div className="first">
-            <form action="/submit" method="post" className="form-container">
-              <div className="main">
-                <label for="firstName">First Name*</label>
-                <input type="text" id="firstName" name="firstName" required />
-              </div>
-              <div className="main">
-                <label for="middleName">Middle Name:</label>
-                <input type="text" id="middleName" name="middleName" />
-              </div>
-              <div className="main">
-                <label for="lastName">Last Name*</label>
-                <input type="text" id="lastName" name="lastName" required />
-              </div>
-              <div className="main">
-                <label for="Fathername">Father's Name*</label>
-                <input type="text" id="Fathername" name="Fathername" required />
-              </div>
-              <div className="main">
-                <label for="Nationality">Nationality*</label>
-                <select id="Nationality">
-                  <option selected>India</option>
-                </select>
-              </div>
-              <div className="main">
-                <label for="BirthDate">Birth Date</label>
-                <input type="date" id="BirthDate" value="2024-04-01" />
-              </div>
-              <div className="main">
-                <label for="Gender">Gender*</label>
-                <select id="Gender">
-                  <option selected>Male</option>
-                </select>
-              </div>
-              <div className="main">
-                <label for="MarialStatus">MarialStatus*</label>
-                <select id="MarialStatus">
-                  <option selected>India</option>
-                </select>
-              </div>
-              <div className="main">
-                <label for="Category">Category</label>
-                <input type="text" id="Category" value="UR" />
-              </div>
-              <div className="main">
-                <label for="IDproof">ID Proof*</label>
-                <select id="IDproof">
-                  <option selected>India</option>
-                </select>
-              </div>
-              <div className="main">
-                <div class="photo-upload">
-                  <h3>Update Id Proof*</h3>
-                  <input type="file" id="photo" name="photo" required />
-                </div>
-              </div>
-            </form>
+      <form action="/page1" method="get">
+        <div className="body">
+          <div className="headerr">
+            <h2>
+              Welcome: <span>Ma Agarwal</span>
+            </h2>
+            <div className="log">
+              <Link to="/Login" className="button">
+                Change Password
+              </Link>
+              <Link to="/Login" className="button">
+                Logout
+              </Link>
+            </div>
           </div>
-          <div className="second">
-            <img className="iitplogo" src={IITPLogo} alt="" />
+
+          <form className="form-container">
             <div className="main">
-              <div class="photo-upload">
-                <h3>Update Id Proof*</h3>
-                <input type="file" id="photo" name="photo" required />
+              <label for="adNumber">Advertisement Number *</label>
+              <select id="adNumber"
+                      name="adnumber"
+                      onChange={handleInput}>
+                <option selected>IITI/FACREC-CHE/2023/JULY/02</option>
+                <option selected>none</option>
+              </select>
+            </div>
+            <div className="main">
+              <label for="appDate">Date of Application</label>
+              <input type="date" id="appDate" value=""
+              onChange={handleInput}
+              name="appdate" />
+            </div>
+            <div className="main">
+              <label for="appNumber">Application Number</label>
+              <input type="text" id="appNumber" value="1698348185" 
+              onChange={handleInput}
+              name="appnumber"/>
+            </div>
+            <div className="main">
+              <label for="postApplied">Post Applied For *</label>
+              <select id="postApplied"
+              onChange={handleInput}
+              name="postapplied">
+                <option selected>Assistant Professor Grade II</option>
+                <option selected>none</option>
+              </select>
+            </div>
+            <div className="main">
+              <label for="department" required>
+                Department/School*
+              </label>
+              <select id="department"
+              onChange={handleInput}
+              name="department">
+                <option selected>Chemical Engineering</option>
+                <option selected>none</option>
+              </select>
+            </div>
+          </form>
+
+          <div className="father">
+            <div className="top">
+              <h3>1. Personal Details</h3>
+            </div>
+            <div class="personal-details">
+              <div className="first">
+                <form action="/submit" method="post" className="form-container">
+                  <div className="main">
+                    <label for="firstName">First Name*</label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstname"
+                      onChange={handleInput}
+                      required
+                    />
+                  </div>
+                  <div className="main">
+                    <label for="middleName">Middle Name:</label>
+                    <input type="text" id="middleName" 
+                    name="middlename" 
+                    onChange={handleInput}/>
+                  </div>
+                  <div className="main">
+                    <label for="lastName">Last Name*</label>
+                    <input type="text" id="lastName" 
+                    name="lastname" 
+                    onChange={handleInput}
+                    required />
+                  </div>
+                  <div className="main">
+                    <label for="Fathername">Father's Name*</label>
+                    <input
+                      type="text"
+                      id="Fathername"
+                      name="fathername"
+                      onChange={handleInput}
+                      required
+                    />
+                  </div>
+                  <div className="main">
+                    <label for="Nationality">Nationality*</label>
+                    <select id="Nationality"
+                    onChange={handleInput}
+                    type="text"
+                    name = "nationality">
+                      <option selected>India</option>
+                      <option selected>none</option>
+                    </select>
+                  </div>
+                  <div className="main">
+                    <label for="BirthDate">Birth Date</label>
+                    <input type="date" id="BirthDate"
+                    onChange={handleInput} 
+                    name = "birthdate"/>
+                  </div>
+                  <div className="main">
+                    <label for="Gender">Gender*</label>
+                    <select id="Gender"
+                    type = "text"
+                    name = "gender"
+                    onChange={handleInput}>
+                      <option selected>Male</option>
+                      <option selected>none</option>
+                    </select>
+                  </div>
+                  <div className="main">
+                    <label for="MarialStatus">MarialStatus*</label>
+                    <select id="MarialStatus"
+                    type = "text"
+                    name = "marialstatus"
+                    onChange={handleInput}>
+                      <option selected>India</option>
+                      <option selected>none</option>
+                    </select>
+                  </div>
+                  <div className="main">
+                    <label for="Category">Category</label>
+                    <input type="text" id="Category" value="UR"
+                    name = "category"/>
+                  </div>
+                  <div className="main">
+                    <label for="IDproof">ID Proof*</label>
+                    <select id="IDproof"
+                    type = "text"
+                    name = "idproof"
+                    onChange={handleInput}>
+                      <option selected>India</option>
+                      <option selected>none</option>
+                    </select>
+                  </div>
+                  <div className="main">
+                    <div class="photo-upload">
+                      <h3>Update Id Proof*</h3>
+                      <input type="file" id="photo" name="photo1" required
+                      onChange={handleInput} />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div className="second">
+                <img className="iitplogo" src={IITPLogo} alt="" />
+                <div className="main">
+                  <div class="photo-upload">
+                    <h3>Update Id Proof*</h3>
+                    <input type="file" id="photo" name="photo2" required
+                    onChange={handleInput} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div>
-        <div className="address">
-          <div className="correspondence">
-            <h2>Correspondence Address</h2>
-            <textarea type="text" placeholder="620 McDermott Canyon" />
-            <textarea type="text" placeholder="Joliet" />
-            <textarea type="text" placeholder="Pennsylvania" />
-            <textarea type="text" placeholder="Nepal" />
-            <textarea type="text" placeholder="18220-" />
+          <div>
+            <div className="address">
+              <div className="correspondence">
+                <h2>Correspondence Address</h2>
+                <textarea type="text" placeholder="620 McDermott Canyon"
+                onChange={handleInput} />
+                <textarea type="text" placeholder="Joliet"
+                onChange={handleInput} />
+                <textarea type="text" placeholder="Pennsylvania"
+                onChange={handleInput} />
+                <textarea type="text" placeholder="Nepal"
+                onChange={handleInput} />
+                <textarea type="text" placeholder="18220-"
+                onChange={handleInput} />
+              </div>
+              <div className="permanent">
+                <h2>Permanent Address</h2>
+                <textarea type="text" placeholder="2865 Gleichner Valley"
+                onChange={handleInput} />
+                <textarea type="text" placeholder="Hoover"
+                onChange={handleInput} />
+                <textarea type="text" placeholder="Louisiana"
+                onChange={handleInput} />
+                <textarea type="text" placeholder="Timor-Leste"
+                onChange={handleInput} />
+                <textarea type="text" placeholder="23802-"
+                onChange={handleInput} />
+              </div>
+            </div>
           </div>
-          <div className="permanent">
-            <h2>Permanent Address</h2>
-            <textarea type="text" placeholder="2865 Gleichner Valley" />
-            <textarea type="text" placeholder="Hoover" />
-            <textarea type="text" placeholder="Louisiana" />
-            <textarea type="text" placeholder="Timor-Leste" />
-            <textarea type="text" placeholder="23802-" />
+          <div className="last">
+            <form method="get" action="/page1" className="form-container">
+              <div className="main">
+                <label for="mobile">Mobile*</label>
+                <input type="text" id="mobile" name="mobile"
+                onChange={handleInput} required />
+              </div>
+              <div className="main">
+                <label for="alternatemobile">Alternate Mobile*</label>
+                <input
+                  type="text"
+                  id="alternatemobile"
+                  name="alternatemobile"
+                  onChange={handleInput}
+                  required
+                />
+              </div>
+
+              <div className="main">
+                <label for="investor">Investor Implementat</label>
+                <input type="text" id="investor" name="investor"
+                onChange={handleInput} />
+              </div>
+
+              <div className="main">
+                <label for="Email">Email</label>
+                <input type="text" id="Email" value="1698348185"
+                onChange={handleInput} />
+              </div>
+              <div className="main">
+                <label for="alternateemail">alternate email*</label>
+                <input
+                  type="text"
+                  id="alternateemail"
+                  name="alternateemail"
+                  onChange={handleInput}
+                  required
+                />
+              </div>
+            </form>
           </div>
         </div>
-      </div>
-      <div className="last">
-      <form className="form-container">
-    <div className="main">
-        <label for="mobile">Mobile*</label>
-        <input type="text" id="mobile" name="mobile" required />
-    </div>
-    <div className="main">
-        <label for="alternatemobile">Alternate Mobile*</label>
-        <input type="text" id="alternatemobile" name="alternatemobile" required />
-    </div>
-
-    <div className="main">
-        <label for="investor">Investor Implementat</label>
-        <input type="text" id="investor" name="investor" />
-    </div>
-
-        <div className="main">
-          <label for="Email">Email</label>
-          <input type="text" id="Email" value="1698348185" />
-        </div>
-        <div className="main">
-        <label for="alternateemail">alternate email*</label>
-        <input type="text" id="alternateemail" name="alternateemail" required />
-    </div>
-</form>
-
-      </div>
-    </div>
-      <div className="footer">
+        <div className="footer">
           <div className="log">
-          <Link to="/page2" className="button">
+            <button className="button"
+            onClick={handleSubmit}>
             SAVE & NEXT
-          </Link>
+          </button>
           </div>
-      </div>
-      </>
+        </div>
+      </form>
+    </>
   );
 };
 

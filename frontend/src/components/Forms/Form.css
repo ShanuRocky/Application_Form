@@ -115,7 +115,8 @@ input{
 
 form input[type=text],
 form input[type=date],
-form select {
+form select 
+{
     width: 100%;
     padding: 8px;
     margin-bottom: 20px;
@@ -159,4 +160,5 @@ textarea{
 .footer .button{
     padding: 10px;
     margin: 65px;
+    
 }

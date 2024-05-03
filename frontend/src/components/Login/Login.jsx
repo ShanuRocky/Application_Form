@@ -1,15 +1,20 @@
 import "./Login.css";
 import email_icon from "../assets/email.png";
 import password_icon from "../assets/password.png";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useState } from "react";
 import Validation from "./LoginVlidation";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Login = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
   const handleInput = (event) => {
@@ -22,6 +27,25 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(Validation(values));
+    if (errors.email === "" && errors.password === "") {
+      console.log({values});
+      console.log("how ?");
+      console.log(values);
+      axios.post("http://localhost:8081/login", values)
+        .then((res) => {
+          console.log({res});
+          if(res.data === "success")
+          {
+            alert("succesfully loged in");
+            navigate("/Forms")
+          }else
+          {
+            console.log("fuck");
+            alert("wrong credentials");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -31,7 +55,7 @@ const Login = () => {
           <div className="text">Login</div>
           <div className="underline"></div>
         </div>
-        <form action="" className="inputs">
+        <form action="/login" method="POST" className="inputs">
           <div className="input">
             <img src={email_icon} alt="" />
             <input
@@ -70,9 +94,9 @@ const Login = () => {
           <Link to="/" className="submit gray">
             Sign Up
           </Link>
-          <Link to="/Forms" type="submit" className="submit">
+          <button onClick={handleSubmit} type="submit" className="submit">
             Login
-          </Link>
+          </button>
         </div>
       </div>
     </div>

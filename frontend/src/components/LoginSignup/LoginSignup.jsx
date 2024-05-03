@@ -31,8 +31,7 @@ const LoginSignup = () => {
     if (errors.name === "" && errors.email === "" && errors.password === "") {
       console.log("how ?");
       console.log(values);
-      axios
-        .post("http://localhost:8081/signup", values)
+      axios.post("http://localhost:8081/signup", values)
         .then((res) => {
           navigate("/Login");
         })
@@ -47,7 +46,7 @@ const LoginSignup = () => {
           <div className="text">Sign Up</div>
           <div className="underline"></div>
         </div>
-        <form action="" className="inputs" onSubmit={handleSubmit}>
+        <form action="/signup" method="POST" className="inputs" onSubmit={handleSubmit}>
           <div className="input">
             <img src={user_icon} alt="" />
             <input
