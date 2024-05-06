@@ -11,7 +11,7 @@ const Page1 = () => {
     const [values, setValues] = useState({
       adnumber: "",
       appdate: "",
-      appnumber: "",
+      appnumber: "1698348185",
       postapplied: "",
       department: "",
       firstname: "",
@@ -26,7 +26,22 @@ const Page1 = () => {
       idproof: "",
       photo1: "",
       photo2: "",
-      email: "1234kumarshanu9@ganil.com"
+      email: "14kumarshanu9@ganil.com",
+      corr_house:   "" ,  
+      corr_area :   "", 
+      corr_state:   "",
+      corr_country: "",
+      corr_pin:     "", 
+      per_house:   "" ,  
+      per_area :   "", 
+      per_state:   "",
+      per_country: "",
+      per_pin:     "",
+      mobile: "",
+      alernatemobile: "",
+      investor: "",
+      email: "14kumarshanu9@email.com",
+      alernateemail: "",
     });
 
     const [errors, setErrors] = useState({});
@@ -47,7 +62,8 @@ const Page1 = () => {
     if (true) {
      axios.post("http://localhost:8081/page1", values)
           .then((res) => {
-            navigate("/page2");
+            if(res.data === "sucess") navigate("/page2");
+            else alert("please fill the necessary fields");
           })
           .catch((err) => console.log(err));
         }
@@ -83,14 +99,13 @@ const Page1 = () => {
             </div>
             <div className="main">
               <label for="appDate">Date of Application</label>
-              <input type="date" id="appDate" value=""
+              <input type="date" id="appDate"
               onChange={handleInput}
               name="appdate" />
             </div>
             <div className="main">
               <label for="appNumber">Application Number</label>
               <input type="text" id="appNumber" value="1698348185" 
-              onChange={handleInput}
               name="appnumber"/>
             </div>
             <div className="main">
@@ -231,29 +246,39 @@ const Page1 = () => {
             <div className="address">
               <div className="correspondence">
                 <h2>Correspondence Address</h2>
-                <textarea type="text" placeholder="620 McDermott Canyon"
-                onChange={handleInput} />
-                <textarea type="text" placeholder="Joliet"
-                onChange={handleInput} />
-                <textarea type="text" placeholder="Pennsylvania"
-                onChange={handleInput} />
-                <textarea type="text" placeholder="Nepal"
-                onChange={handleInput} />
-                <textarea type="text" placeholder="18220-"
-                onChange={handleInput} />
+                <textarea type="text" placeholder="house"
+                onChange={handleInput}
+                name = "corr_house" />
+                <textarea type="text" placeholder="area"
+                onChange={handleInput} 
+                name = "corr_area"/>
+                <textarea type="text" placeholder="state"
+                onChange={handleInput}
+                name = "corr_state" />
+                <textarea type="text" placeholder="country"
+                onChange={handleInput}
+                name = "corr_country" />
+                <textarea type="text" placeholder="pin"
+                onChange={handleInput}
+                name = "corr_pin" />
               </div>
               <div className="permanent">
                 <h2>Permanent Address</h2>
-                <textarea type="text" placeholder="2865 Gleichner Valley"
-                onChange={handleInput} />
-                <textarea type="text" placeholder="Hoover"
-                onChange={handleInput} />
-                <textarea type="text" placeholder="Louisiana"
-                onChange={handleInput} />
-                <textarea type="text" placeholder="Timor-Leste"
-                onChange={handleInput} />
-                <textarea type="text" placeholder="23802-"
-                onChange={handleInput} />
+                <textarea type="text" placeholder="house"
+                onChange={handleInput}
+                name = "per_house" />
+                <textarea type="text" placeholder="area"
+                onChange={handleInput}
+                name = "per_area" />
+                <textarea type="text" placeholder="state"
+                onChange={handleInput}
+                name = "per_state" />
+                <textarea type="text" placeholder="country"
+                onChange={handleInput}
+                name = "per_country" />
+                <textarea type="text" placeholder="pin"
+                onChange={handleInput}
+                name = "per_pin" />
               </div>
             </div>
           </div>
@@ -283,8 +308,8 @@ const Page1 = () => {
 
               <div className="main">
                 <label for="Email">Email</label>
-                <input type="text" id="Email" value="1698348185"
-                onChange={handleInput} />
+                <input type="text" id="Email" value="1234kumarshanu9@gmail.com"
+                 />
               </div>
               <div className="main">
                 <label for="alternateemail">alternate email*</label>
