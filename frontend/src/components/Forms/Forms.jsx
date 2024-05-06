@@ -1,12 +1,14 @@
 import "./Form.css";
 import IITPLogo from "../assets/IITp.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
 const Page1 = () => {
+
+  const gotemail = useLocation();
 
     const [values, setValues] = useState({
       adnumber: "",
@@ -26,7 +28,7 @@ const Page1 = () => {
       idproof: "",
       photo1: "",
       photo2: "",
-      email: "14kumarshanu9@ganil.com",
+      email: gotemail.state.logemail,
       corr_house:   "" ,  
       corr_area :   "", 
       corr_state:   "",
@@ -40,7 +42,6 @@ const Page1 = () => {
       mobile: "",
       alernatemobile: "",
       investor: "",
-      email: "14kumarshanu9@email.com",
       alernateemail: "",
     });
 
@@ -308,7 +309,7 @@ const Page1 = () => {
 
               <div className="main">
                 <label for="Email">Email</label>
-                <input type="text" id="Email" value="1234kumarshanu9@gmail.com"
+                <input type="text" id="Email" value={gotemail.state.logemail}
                  />
               </div>
               <div className="main">

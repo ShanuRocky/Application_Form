@@ -24,7 +24,8 @@ const LoginSignup = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => 
+  {
     event.preventDefault();
     setErrors(Validation(values));
     console.log(errors);
@@ -32,8 +33,15 @@ const LoginSignup = () => {
       console.log("how ?");
       console.log(values);
       axios.post("http://localhost:8081/signup", values)
-        .then((res) => {
+        .then((res) => 
+        {
+          if(res.data === "email already registered")
+          {
+            alert("email already registered");
+          }else
+          {
           navigate("/Login");
+          }
         })
         .catch((err) => console.log(err));
     }

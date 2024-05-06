@@ -37,7 +37,7 @@ const Login = () => {
           if(res.data === "success")
           {
             alert("succesfully loged in");
-            navigate("/Forms")
+            navigate("/Forms",{state : {logemail : values.email}});
           }else
           {
             console.log("fuck");
