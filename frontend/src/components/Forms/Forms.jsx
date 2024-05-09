@@ -59,11 +59,10 @@ const Page1 = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // setErrors(form_validation(values)); //to do - ujjawal bkl, yeh tu kar
-
     if (true) {
      axios.post("http://localhost:8081/page1", values)
           .then((res) => {
-            if(res.data === "sucess") navigate("/page2");
+            if(res.data === "success") navigate("/page2");
             else alert("please fill the necessary fields");
           })
           .catch((err) => console.log(err));

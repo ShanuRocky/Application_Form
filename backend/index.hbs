@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta value="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>hello</title>
+</head>
+
+<body>
+
+
+    <form class="form-container">
+        <div class="main">
+            <label for="adNumber">Advertisement Number *</label>
+            <select id="adNumber" value="adnumber">
+                <option selected>{{adnumber}}</option>
+            </select>
+        </div>
+        <div class="main">
+            <label for="appDate">Date of Application</label>
+            <input type="date" value={{appdate}} />
+        </div>
+        <div class="main">
+            <label for="appNumber">Application Number</label>
+            <input type="text" id="appNumber" value={{appnumber}} value="appnumber" />
+        </div>
+        <div class="main">
+            <label for="postApplied">Post Applied For *</label>
+            <select id="postApplied" value="postapplied">
+                <option selected>{{postapplied}}</option>
+            </select>
+        </div>
+        <div class="main">
+            <label for="department" required>
+                Department/School*
+            </label>
+            <select id="department" value="department">
+                <option selected>{{department}}</option>
+            </select>
+        </div>
+    </form>
+    <div class="father">
+        <div class="top">
+            <h3>1. Personal Details</h3>
+        </div>
+        <div class="personal-details">
+            <div class="first">
+                <form action="/submit" method="post" class="form-container">
+                    <div class="main">
+                        <label for="firstname">First name*</label>
+                        <input type="text" id="firstvalue" value={{firstname}} />
+                    </div>
+                    <div class="main">
+                        <label for="middlename">Middle name:</label>
+                        <input type="text" id="middlevalue" value={{middlename}} />
+                    </div>
+                    <div class="main">
+                        <label for="lastname">Last name*</label>
+                        <input type="text" id="lastvalue" value={{lastname}} />
+                    </div>
+                    <div class="main">
+                        <label for="Fathervalue">Father's name*</label>
+                        <input type="text" id="Fathervalue" value={{fathername}} />
+                    </div>
+                    <div class="main">
+                        <label for="Nationality">Nationality*</label>
+                        <select id="Nationality" type="text" value="nationality">
+                            <option selected>{{nationality}}</option>
+                        </select>
+                    </div>
+                    <div class="main">
+                        <label for="BirthDate">Birth Date</label>
+                        <input type="date" id="BirthDate" value={{birthdate}} />
+                    </div>
+                    <div class="main">
+                        <label for="Gender">Gender*</label>
+                        <select id="Gender" type="text" value="gender">
+                            <option selected>{{gender}}</option>
+                        </select>
+                    </div>
+                    <div class="main">
+                        <label for="MarialStatus">MarialStatus*</label>
+                        <select id="MarialStatus" type="text" value="marialstatus">
+                            <option selected>{{marialstatus}}</option>
+                        </select>
+                    </div>
+                    <div class="main">
+                        <label for="Category">Category</label>
+                        <input type="text" id="Category" value={{category}} />
+                    </div>
+                    <div class="main">
+                        <label for="IDproof">ID Proof*</label>
+                        <select id="IDproof" type="text" value="idproof">
+                            <option selected>{{idproof}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <img class="iitplogo" src="./IITp.png" alt="" />
+        </div>
+    </div>
+    <div>
+        <div class="address">
+            <div class="correspondence">
+                <h2>Correspondence Address</h2>
+                <input type="text" placeholder="house" value={{corr_house}} />
+                <input type="text" placeholder="area" value={{corr_area}} />
+                <input type="text" placeholder="state" value={{corr_state}} />
+                <input type="text" placeholder="country" value={{corr_country}} />
+                <input type="text" placeholder="pin" value={{corr_pin}} />
+            </div>
+            <div class="permanent">
+                <h2>Permanent Address</h2>
+                <input type="text" placeholder="house" value={{per_house}} />
+                <input type="text" placeholder="area" value={{per_area}} />
+                <input type="text" placeholder="state" value={{per_state}} />
+                <input type="text" placeholder="country" value={{per_country}} />
+                <input type="text" placeholder="pin" value={{per_pin}} />
+            </div>
+        </div>
+    </div>
+    <div class="last">
+        <form method="get" action="/page1" class="form-container">
+            <div class="main">
+                <label for="mobile">Mobile*</label>
+                <input type="text" id="mobile" value={{mobile}} />
+            </div>
+            <div class="main">
+                <label for="alternatemobile">Alternate Mobile*</label>
+                <input type="text" id="alternatemobile" value={{alternatemobile}} />
+            </div>
+
+            <div class="main">
+                <label for="investor">Investor Implementat</label>
+                <input type="text" id="investor" value={{investor}} />
+            </div>
+
+            <div class="main">
+                <label for="Email">Email</label>
+                <input type="text" id="Email" value={{email}} />
+            </div>
+            <div class="main">
+                <label for="alternateemail">alternate email*</label>
+                <input type="text" id="alternateemail" value={{alternateemail}} />
+            </div>
+        </form>
+    </div>
+    </div>
+
+
+
+
+
+    <div class="father">
+        <div class="top">
+            <h3>(A) Details of PhD* </h3>
+        </div>
+        <div class="personal-details">
+            <form class="form-container" action="/submit" method="post">
+                <div class="main">
+                    <label for="university">University/Institute</label>
+                    <input type="text" id="university" value={{university}} />
+                </div>
+                <div class="main">
+                    <label for="Department">Department</label>
+                    <input type="text" id="Department" value={{department}} />
+                </div>
+                <div class="main">
+                    <label for="valueofPhdsupervisor">name Of Phd Supervisor</label>
+                    <input type="text" id="valueofPhdsupervisor" value={{nameofphdsupervisor}} />
+                </div>
+                <div class="main">
+                    <label for="yearofjoining">Year Of Joining</label>
+                    <input type="text" id="yearofjoining" value={{yearofjoining}} />
+                </div>
+                <div class="main">
+                    <label for="dateofsuccessfulthesisdefence">Date of Successful Thesis Defence</label>
+                    <input type="date" id="dateofsuccessfulthesisdefence" value="2024-04-01" />
+                </div>
+                <div class="main">
+                    <label for="dateofaward">Date of Award</label>
+                    <input type="date" id="dateofaward" value="2024-04-01" />
+                </div>
+                <div class="main">
+                    <label for="title">Title of PhD Thesis</label>
+                    <input type="text" id="title" value={{title}} />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="father">
+        <div class="top">
+            <h3>(B) Academic Details - M. Tech./ M.E./ PG Details </h3>
+        </div>
+        <div class="personal-details">
+            <form class="form-container" action="/submit" method="post">
+                <div class="main">
+                    <label for="Degree/Certificate">Degree/Certificate</label>
+                    <input type="text" id="Degree/Certificate" value={{mdegree}} />
+                </div>
+                <div class="main">
+                    <label for="University/Institute">University/Institute</label>
+                    <input type="text" id="University/Institute" value={{muniversity}} />
+                </div>
+                <div class="main">
+                    <label for="Branch/Stream">Branch/Stream</label>
+                    <input type="text" id="Branch/Stream" value={{mbranch}} />
+                </div>
+                <div class="main">
+                    <label for="yearofjoining">Year Of Joining</label>
+                    <input type="text" id="yearofjoining" value={{myearofjoining}} />
+                </div>
+                <div class="main">
+                    <label for="YearofCompletion">Year of Completion</label>
+                    <input type="text" id="YearofCompletion" value={{myearofcompletion}} />
+                </div>
+                <div class="main">
+                    <label for="Duration">Duration</label>
+                    <input type="text" id="Duration" value={{mduration}} />
+                </div>
+                <div class="main">
+                    <label for="Percentage/CGPA">Percentage/CGPA</label>
+                    <input type="text" id="Percentage/CGPA" value={{mpercentage}} />
+                </div>
+                <div class="main">
+                    <label for="Division/Class">Division/Class</label>
+                    <input type="text" id="Division/Class" value={{mdivision}} />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="father">
+        <div class="top">
+            <h3>(C) Academic Details - B. Tech /B.E. / UG Details * </h3>
+        </div>
+        <div class="personal-details">
+            <form class="form-container" action="/submit" method="post">
+                <div class="main">
+                    <label for="Degree/Certificate">Degree/Certificate</label>
+                    <input type="text" id="Degree/Certificate" value={{bdegree}} />
+                </div>
+                <div class="main">
+                    <label for="University/Institute">University/Institute</label>
+                    <input type="text" id="University/Institute" value={{buniversity}} />
+                </div>
+                <div class="main">
+                    <label for="Branch/Stream">Branch/Stream</label>
+                    <input type="text" id="Branch/Stream" value={{bbranch}} />
+                </div>
+                <div class="main">
+                    <label for="yearofjoining">Year Of Joining</label>
+                    <input type="text" id="yearofjoining" value={{byearofjoining}} />
+                </div>
+                <div class="main">
+                    <label for="YearofCompletion">Year of Completion</label>
+                    <input type="text" id="YearofCompletion" value={{byearofcompletion}} />
+                </div>
+                <div class="main">
+                    <label for="Duration">Duration</label>
+                    <input type="text" id="Duration" value={{bduration}} />
+                </div>
+                <div class="main">
+                    <label for="Percentage/CGPA">Percentage/CGPA</label>
+                    <input type="text" id="Percentage/CGPA" value={{bpercentage}} />
+                </div>
+                <div class="main">
+                    <label for="Division/Class">Division/Class</label>
+                    <input type="text" id="Division/Class" value={{bdivision}} />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="father">
+        <div class="top">
+            <h3>(A) Present Employment </h3>
+        </div>
+        <div class="personal-details">
+            <form class="form-container" action="/submit" method="post">
+                <div class="main">
+                    <label for="position">Position</label>
+                    <input type="text" id="position" value={{position}} />
+                </div>
+                <div class="main">
+                    <label for="organization">Organization / Institution</label>
+                    <input type="text" id="organization" value={{organization}} />
+                </div>
+                <div class="main">
+                    <label for="status">Status</label>
+                    <input type="text" id="status" value="status" />
+                </div>
+                <div class="main">
+                    <label for="dateofsuccessfulthesisdefence">
+                        Date of joining
+                    </label>
+                    <input type="date" id="dateofsuccessfulthesisdefence" value="2024-04-01" />
+                </div>
+                <div class="main">
+                    <label for="leavingdate">
+                        Date of leaving (Mention continue if working)
+                    </label>
+                    <input type="text" id="leavingdate" value={{leavingdate}} />
+                </div>
+                <div class="main">
+                    <label for="duration">
+                        Duration (in years & months)
+                    </label>
+                    <input type="text" id="duration" value={{duration}} />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="father">
+        <div class="top">
+            <h3>(B) Employment History (Afte PhD, Starting with Latest) </h3>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>S. No.</th>
+                    <th>Position Held</th>
+                    <th>Organization/Institution</th>
+                    <th>Date of Joining</th>
+                    <th>Date of Leaving</th>
+                    <th>Duration (in years & months)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <input type="text" value={{position1}} placeholder="Position 1" />
+                    </td>
+                    <td>
+                        <input type="text" value={{organization1}} placeholder="Organization 1" />
+                    </td>
+                    <td>
+                        <input type="date" value={{joiningdate1}} placeholder="Joining Date 1" />
+                    </td>
+                    <td>
+                        <input type="date" value={{leavingdate1}} placeholder="Leaving Date 1" />
+                    </td>
+                    <td>
+                        <input type="text" value={{duration1}} placeholder="Duration 1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <input type="text" value={{position2}} placeholder="Position 2" />
+                    </td>
+                    <td>
+                        <input type="text" value={{organization2}} placeholder="Organization 2" />
+                    </td>
+                    <td>
+                        <input type="date" value={{joiningdate2}} placeholder="Joining Date 2" />
+                    </td>
+                    <td>
+                        <input type="date" value={{leavingdate2}} placeholder="Leaving Date 2" />
+                    </td>
+                    <td>
+                        <input type="text" value={{duration2}} placeholder="Duration 2" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        {/* Experience note */}
+        <p class="experience-note">
+            Experience: - Minimum 6 years' experience of which at least 3 years
+            should be at the level of Assistant Professor Grade I/ Senior
+            Scientific Officer/ Senior Design Engineer.
+        </p>
+
+        {/* Yes/No option */}
+        {/* This would likely be part of a form submission process */}
+        <label htmlFor="yesOption">Yes</label>
+        <input type="radio" id="yesOption" value={{confirmation}} />
+        <label htmlFor="noOption">No</label>
+        <input type="radio" id="noOption" value={{confirmation}} />
+    </div>
+    <div class="father">
+        <div class="top">
+            <h3>(C) Teaching Experience (After PhD) </h3>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S. No.</th>
+                        <th>Position</th>
+                        <th>Employer</th>
+                        <th>Course Taught</th>
+                        <th>No. of PG/UG Students</th>
+                        <th>Date of Joining the Institute</th>
+                        <th>Date of Leaving the Institute</th>
+                        <th>Duration (in years & months)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <input type="text" value={{teachposition1}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{teachemployer1}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{teachcourse1}} />
+                        </td>
+                        <td>
+                            <input type="number" value={{teachnumofstud1}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{teachjoiningdate1}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{teachleavingdate1}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{teachduration1}} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <input type="text" value={{teachposition2}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{teachemployer2}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{teachcourse2}} />
+                        </td>
+                        <td>
+                            <input type="number" value={{teachnumofstud2}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{teachjoiningdate2}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{teachleavingdate2}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{teachduration2}} />
+                        </td>
+                    </tr>
+                    {/* Add more rows as needed */}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="father">
+        <div class="top">
+            <h3>
+                (D) Research Experience (Post PhD, including Post Doctoral){" "}
+            </h3>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S. No.</th>
+                        <th>Position</th>
+                        <th>Institute</th>
+                        <th>Supervisor</th>
+                        <th>Date of Joining</th>
+                        <th>Date of Leaving</th>
+                        <th>Duration (in years & months)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <input type="text" value={{resposition1}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{resinstitute1}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{ressupervisor1}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{resjoiningdate1}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{resleavingdate1}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{resduration1}} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <input type="text" value={{resposition2}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{resinstitute2}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{ressupervisor2}} />
+                        </td>
+
+                        <td>
+                            <input type="date" value={{resjoiningdate2}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{resleavingdate2}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{resduration2}} />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="father">
+        <div class="top">
+            <h3>(E) Industrial Experience </h3>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S. No.</th>
+                        <th>Organization</th>
+                        <th>Work Profile</th>
+                        <th>Date of Joining</th>
+                        <th>Date of Leaving</th>
+                        <th>Duration (in years & months)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <input type="text" value={{exorganization1}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{exprofile1}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{exjoiningdate1}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{exleavingdate1}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{exduration1}} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <input type="text" value={{exorganization2}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{exprofile2}} />
+                        </td>
+                        <td>
+                            <input type="date" value={{exjoiningdate2}} />
+                        </td>
+
+                        <td>
+                            <input type="date" value={{exleavingdate2}} />
+                        </td>
+                        <td>
+                            <input type="text" value={{exduration2}} />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="containerrrr">
+        <div class="text-areaaa" id="specialization">
+            <h2>Areas of specialization</h2>
+            <textarea  rows="13" cols="60">
+              {{specialization}}
+            </textarea>
+        </div>
+        <div class="text-areaaa" id="research">
+            <h2>Current Area of research</h2>
+            <textarea value={{research}} rows="13" cols="60">
+              {{research}}
+            </textarea>
+        </div>
+    </div>
+    </div>
+
+
+
+</body>
+
+</html>
