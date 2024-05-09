@@ -28,27 +28,27 @@ const compile = async function (templatename, datas) {
   return hbs.compile(html)(datas);
 };
 
-async function pdf(datas) {
+
+async function generatePdf(datas) {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    // console.log(data);
     const content = await compile("index", datas);
-
     await page.setContent(content);
 
-    // create a pdf here
-    await page.pdf({
-      path: "output.pdf",
+    const pdfBuffer = await page.pdf({
+      path: null, // Prevent file creation (we'll create a buffer)
       format: "A4",
       printBackground: true,
     });
-    console.log("pdf generated");
 
     await browser.close();
-  } catch {
-    console.log("error");
+    console.log("pdf generated");
+    return pdfBuffer;  // Return the PDF data as a buffer
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+    return null;  // Or throw an error if preferred
   }
 }
 
@@ -61,23 +61,22 @@ const db = mysql.createConnection({
   database: "signup",
 });
 
-app.get('/page4', (req, res) => {
-  pdf(datas);
-  const filePath = './output.pdf'; // Replace with actual path
+app.get('/page4', async (req, res) => {
+  try {
+    const pdfBuffer = await generatePdf(datas);
 
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      console.error('Error reading PDF:', err.message);
-      res.status(500).send('Error downloading PDF');
+    if (pdfBuffer) {
+      // Set content type and filename
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'attachment; filename="your_pdf.pdf"');
+      res.send(pdfBuffer);
     } else {
-      const contentType = 'application/pdf'; // Or get content type from file metadata
-      const contentDisposition = 'attachment; filename="your_pdf.pdf"';
-
-      res.setHeader('Content-Type', contentType);
-      res.setHeader('Content-Disposition', contentDisposition);
-      res.send(data);
+      res.status(500).send('Error generating PDF');
     }
-  });
+  } catch (error) {
+    console.error('Error handling PDF:', error);
+    res.status(500).send('Error generating PDF');
+  }
 });
 
 app.post("/signup", (req, res) => {
