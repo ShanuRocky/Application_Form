@@ -24,9 +24,15 @@ const Page1 = () => {
             responseType: "blob"
          })
               .then((res) => {
+                alert("congo");
                   fileDownload(res.data,"download.pdf");
+                  navigate("/login");
+                  alert("form filled completely");
               })
-              .catch((err) => console.log(err));
+              .catch((err) => {
+                  alert("lauda");
+                console.log(err);
+              });
             }
       };
 

@@ -8,13 +8,11 @@ import fs from "fs-extra";
 import path from "path";
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import http from "http";
     
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.set("view engine","ejs");
 
 const compile = async function (templatename, datas) {
   const filepath = path.join(process.cwd(), `${templatename}.hbs`);
@@ -63,15 +61,23 @@ const db = mysql.createConnection({
   database: "signup",
 });
 
+app.get('/page4', (req, res) => {
+  pdf(datas);
+  const filePath = './output.pdf'; // Replace with actual path
 
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      console.error('Error reading PDF:', err.message);
+      res.status(500).send('Error downloading PDF');
+    } else {
+      const contentType = 'application/pdf'; // Or get content type from file metadata
+      const contentDisposition = 'attachment; filename="your_pdf.pdf"';
 
-app.get("/page4", async (res) => {
-  console.log("yup")
-  try {
-     res.download("./output.pdf");  
-  } catch (err) {
-    console.log(err);
-  }
+      res.setHeader('Content-Type', contentType);
+      res.setHeader('Content-Disposition', contentDisposition);
+      res.send(data);
+    }
+  });
 });
 
 app.post("/signup", (req, res) => {
@@ -159,7 +165,6 @@ app.post("/page3", (req, res) => {
   datas.specialization = req.body.specialization;
   datas.research = req.body.research;
 
-  pdf(datas);
   const sqll = "SELECT * FROM `present_employment` WHERE `email` = ?";
   console.log(req.body.email);
   db.query(sqll, [req.body.email], (err, data) => {
