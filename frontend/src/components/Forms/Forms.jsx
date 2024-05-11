@@ -62,7 +62,7 @@ const Page1 = () => {
     if (true) {
      axios.post("http://localhost:8081/page1", values)
           .then((res) => {
-            if(res.data === "success") navigate("/page2");
+            if(res.data === "success") navigate("/page2",{state : {logemail : values.email}});
             else alert("please fill the necessary fields");
           })
           .catch((err) => console.log(err));

@@ -5,7 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Page1 = () => {
-
+    
+   
     const navigate = useNavigate();
 
 

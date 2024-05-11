@@ -29,7 +29,8 @@ const compile = async function (templatename, datas) {
 };
 
 
-async function generatePdf(datas) {
+async function generatePdf(datas) 
+{
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -80,10 +81,11 @@ app.get('/page4', async (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-  // console.log(req.body);
+   console.log(req.body);
   const sqll = "SELECT * FROM login WHERE `email` = ? ";
   db.query(sqll, [req.body.email], (err, data) => {
     if (err) {
+      console.log(err);
       return res.json("error 404");
     } else {
       if (data.length === 0) {
@@ -93,14 +95,16 @@ app.post("/signup", (req, res) => {
         console.log(values);
         db.query(sql, [values], (err, data) => {
           console.log(err);
-          if (err) {
+          if (err) 
+          {
             console.log("Error in inserting data");
             return res.json("Error in inserting data");
           }
           console.log(data);
           return res.json(data);
         });
-      } else {
+      } else 
+      {
         return res.json("email already registered");
       }
     }
@@ -512,6 +516,7 @@ app.post("/page2", (req, res) => {
         req.body.bdivision,
         req.body.email,
       ];
+      console.log(value3);
       db.query(sql1, value1, (err1, data1) => {
         if (err1) {
           console.log("!@#" + err1);
@@ -571,6 +576,7 @@ app.post("/page2", (req, res) => {
         req.body.bpercentage,
         req.body.bdivision,
       ];
+      console.log(value3);
       db.query(sql1, [value1], (err, data) => {
         if (err) {
           console.log("QWEERTYUIOPLLJGFDSAZXVBNM" + err);
@@ -954,6 +960,7 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.listen(8081, () => {
+app.listen(8081, () => 
+{
   console.log("running on port 8081");
 });

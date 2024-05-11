@@ -1,18 +1,20 @@
 import "./Form.css";
-import IITPLogo from "../assets/IITp.png";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 
 
 const Page2 = () => {
 
+  const gotemail = useLocation();
+
+
   const navigate = useNavigate();
 
   const [values, setValues] = useState({
-    email: "1234kumarshanu9@gmail.com",
+    email: gotemail.state.logemail,
       university: "",
       department: "",
       nameofphdsupervisor: "",
@@ -53,7 +55,7 @@ const Page2 = () => {
       axios.post("http://localhost:8081/page2", values)
            .then((res) => {
             console.log(res.data);
-             if(res.data === "success") navigate("/page3");
+             if(res.data === "success") navigate("/page3",{state : {logemail : values.email}});
              else alert("please fill the necessary fields");
            })
            .catch((err) => console.log(err));

@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 const Page3 = () => {
 
+  const gotemail = useLocation();
+
     const navigate = useNavigate();
 
   const [values, setValues] = useState({
-    email: "1234kumarshanu9@gmail.com",
+    email: gotemail.state.logemail,
     position: "",
     organization: "",
     status: "",
@@ -82,7 +84,7 @@ const Page3 = () => {
       {
       axios.post("http://localhost:8081/page3", values)
            .then((res) => {
-             if(res.data === "success") navigate("/page5");
+             if(res.data === "success") navigate("/page5",{state : {logemail : values.email}});
              else alert("please fill the necessary fields");
            })
            .catch((err) => console.log(err));
